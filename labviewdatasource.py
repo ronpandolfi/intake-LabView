@@ -38,7 +38,6 @@ class LabViewLogSource(intake.source.base.DataSource):
 
     def _get_partition(self, i):
         # Return the appropriate container of data here
-        # TODO: convert to dask bag from_array
         return da.from_array(np.genfromtxt(self.partitions[i],
                        delimiter = '\t',
                        names=True,
@@ -48,7 +47,6 @@ class LabViewLogSource(intake.source.base.DataSource):
 
     def read(self):
         # self._load_metadata()
-        # TODO: change to dask.concatenate
         return da.concatenate([self.read_partition(i) for i in range(self.npartitions)])
 
     def _close(self):
