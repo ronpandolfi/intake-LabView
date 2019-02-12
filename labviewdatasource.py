@@ -58,6 +58,6 @@ class LabViewLogSource(intake.source.base.DataSource):
 
 
 if __name__ == '__main__':
-    catalog = LabViewLogSource(['/home/rp/Downloads/04-01-2018 Data.txt'])
+    catalog = LabViewLogSource(['tests/04-01-2018 Data.txt'])
     print(catalog.read()[0].compute())
 
